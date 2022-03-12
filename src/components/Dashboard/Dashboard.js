@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NearConfig, TGas, useAurora, useNear } from "../../data/near";
 import { useErc20Balances } from "../../data/aurora/token";
+import { useErc20AllowanceForDex } from "../../data/aurora/dex";
 import { OneNear, OneEth, toAddress, buildInput } from "../../data/utils";
 import Big from "big.js";
 import { useTokens } from "../../data/aurora/tokenList";
@@ -11,6 +12,8 @@ import { useAccount } from "../../data/account";
 import { AccountID, Address } from "@aurora-is-near/engine";
 
 const wNEAR = NearConfig.wrapNearAccountId;
+const USDT = NearConfig.usdtAccountId;
+const trisolaris = NearConfig.trisolarisAddress;
 
 const fetchBalance = async (aurora, address) => {
   return Big((await aurora.getBalance(toAddress(address))).unwrap());
@@ -23,9 +26,11 @@ export default function Dashboard(props) {
   const address = props.address;
   const [balance, setBalance] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [wNearAddr, setwNearAddr] = useState(null);
   const tokens = useTokens();
 
   const erc20Balances = useErc20Balances(address, tokens.tokenAddresses);
+  const allowance = useErc20AllowanceForDex(address, wNearAddr, trisolaris);
 
   useEffect(() => {
     if (!aurora) {
@@ -37,6 +42,8 @@ export default function Dashboard(props) {
       setBalance(b);
       setLoading(false);
     });
+
+    getErc20Addr(wNEAR).then(setwNearAddr);
   }, [address, aurora]);
 
   const sortedErc20Balances = erc20Balances
@@ -91,9 +98,29 @@ export default function Dashboard(props) {
     }
   };
 
+  const approve = async(e, token, amount) => {
+    e.preventDefault();
+    setLoading(true);
+    const input = buildInput(Erc20Abi, "approve", [
+      trisolaris,
+      OneNear.mul(amount).round(0, 0).toFixed(0),
+    ]);
+    const erc20Addr = await getErc20Addr(token);
+    if (erc20Addr) {
+      const res = (await aurora.call(toAddress(erc20Addr), input)).unwrap();
+      console.log(res);
+      setLoading(false);
+    }
+  }
+
+  const swap = async(e, from, to, amount) => {
+
+  }
+
   return (
     <div>
       <div>Account: {address.toString()}</div>
+      <div>Allowance for {wNEAR}: {allowance && allowance.div(Big(OneNear)).toNumber()}</div>
       <div>
         <button
           className="btn btn-primary m-1"
@@ -101,11 +128,27 @@ export default function Dashboard(props) {
         >
           Deposit 1 wNEAR
         </button>
+        {
+          (!allowance || allowance.eq(Big(0))) && (
+            <button
+              className="btn btn-info m-1"
+              onClick={(e) => approve(e, wNEAR, 10)}
+            >
+              Approve wNEAR on Trisolaris
+            </button>
+          )
+        }
         <button
-          className="btn btn-primary m-1"
-          onClick={(e) => withdrawToken(e, wNEAR, 1)}
+          className="btn btn-warning m-1"
+          onClick={(e) => swap(e, wNEAR, USDT, 1)}
         >
-          Withdraw 1 wNEAR
+          Swap 1 wNEAR to 10+ USDT on Trisolaris
+        </button>
+        <button
+          className="btn btn-success m-1"
+          onClick={(e) => withdrawToken(e, USDT, 10)}
+        >
+          Withdraw 10 USDT
         </button>
       </div>
       <div>
