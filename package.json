@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "/",
+  "homepage": "https://think-in-universe.github.io/ref-aurora-frontend",
   "private": true,
   "dependencies": {
     "@aurora-is-near/engine": "think-in-universe/aurora.js#support-es6",
@@ -16,6 +16,7 @@
     "chartjs-adapter-moment": "^1.0.0",
     "collections": "^5.1.12",
     "error-polyfill": "^0.1.2",
+    "gh-pages": "^3.2.3",
     "local-storage": "^2.0.0",
     "moment": "^2.29.1",
     "near-api-js": "^0.44.0",
@@ -42,7 +43,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "yarn build"
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
