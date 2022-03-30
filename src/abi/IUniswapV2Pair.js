@@ -1,4 +1,4 @@
-[
+export const UniswapPairAbi = [
   {
     "anonymous": false,
     "inputs": [

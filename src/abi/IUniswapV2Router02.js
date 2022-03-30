@@ -1,4 +1,4 @@
-[
+export const UniswapRouterAbi = [
   {
     "inputs": [],
     "name": "WETH",

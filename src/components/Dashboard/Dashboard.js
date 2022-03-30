@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { NearConfig, TGas, useAurora, useNear } from "../../data/near";
 import { useErc20Balances } from "../../data/aurora/token";
 import { useErc20AllowanceForDex } from "../../data/aurora/dex";
-import { OneNear, OneEth, toAddress, buildInput } from "../../data/utils";
+import { OneNear, OneEth, OneUSDT, toAddress, buildInput, tokenStorageDeposit } from "../../data/utils";
 import Big from "big.js";
 import { useTokens } from "../../data/aurora/tokenList";
 import "./Dashboard.scss";
 import * as nearAPI from "near-api-js";
 import { Erc20Abi } from "../../abi/erc20";
+import { UniswapRouterAbi } from "../../abi/IUniswapV2Router02";
 import { useAccount } from "../../data/account";
 import { AccountID, Address } from "@aurora-is-near/engine";
 
@@ -83,12 +84,30 @@ export default function Dashboard(props) {
     await near.sendTransactions(actions);
   };
 
+  const storageDeposit = async (token, account) => {
+    const deposit = await tokenStorageDeposit(token);
+    const actions = [
+      [
+        token,
+        nearAPI.transactions.functionCall(
+          "storage_deposit",
+          {
+            receiver_id: account
+          },
+          TGas.mul(30).toFixed(0),
+          deposit.toFixed(0)
+        ),
+      ],
+    ];
+    await near.sendTransactions(actions);
+  };
+
   const withdrawToken = async (e, token, amount) => {
     e.preventDefault();
     setLoading(true);
     const input = buildInput(Erc20Abi, "withdrawToNear", [
       `0x${Buffer.from(account.accountId, "utf-8").toString("hex")}`,
-      OneNear.mul(amount).round(0, 0).toFixed(0),
+      OneUSDT.mul(amount).round(0, 0).toFixed(0),  // need to check decimals in real case
     ]);
     const erc20Addr = await getErc20Addr(token);
     if (erc20Addr) {
@@ -113,8 +132,23 @@ export default function Dashboard(props) {
     }
   }
 
-  const swap = async(e, from, to, amount) => {
-
+  const swap = async(e, from, to, amount_in, amount_out) => {
+    e.preventDefault();
+    setLoading(true);
+    const fromErc20 = await getErc20Addr(from);
+    const toErc20 = await getErc20Addr(to);
+    if (fromErc20 && toErc20) {
+      const input = buildInput(UniswapRouterAbi, "swapExactTokensForTokens", [
+        OneNear.mul(amount_in).round(0, 0).toFixed(0),  // need to check decimals in real case
+        OneUSDT.mul(amount_out).round(0, 0).toFixed(0),  // need to check decimals in real case
+        [fromErc20, toErc20],
+        address,
+        (Math.floor(new Date().getTime() / 1000) + 60).toString() // 60s from now
+      ]);
+      const res = (await aurora.call(toAddress(trisolaris), input)).unwrap();
+      console.log(res);
+      setLoading(false);
+    }
   }
 
   return (
@@ -140,15 +174,15 @@ export default function Dashboard(props) {
         }
         <button
           className="btn btn-warning m-1"
-          onClick={(e) => swap(e, wNEAR, USDT, 1)}
+          onClick={(e) => swap(e, wNEAR, USDT, 0.1, 1)}
         >
-          Swap 1 wNEAR to 10+ USDT on Trisolaris
+          Swap 0.1 wNEAR to 1+ USDT on Trisolaris
         </button>
         <button
           className="btn btn-success m-1"
-          onClick={(e) => withdrawToken(e, USDT, 10)}
+          onClick={(e) => withdrawToken(e, USDT, 1)}
         >
-          Withdraw 10 USDT
+          Withdraw 1 USDT
         </button>
       </div>
       <div>
