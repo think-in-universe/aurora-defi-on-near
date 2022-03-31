@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/ref-aurora-frontend/static/css/main.45a2763a.chunk.css",
-    "main.js": "/ref-aurora-frontend/static/js/main.a835e18f.chunk.js",
-    "main.js.map": "/ref-aurora-frontend/static/js/main.a835e18f.chunk.js.map",
-    "runtime-main.js": "/ref-aurora-frontend/static/js/runtime-main.464991e0.js",
-    "runtime-main.js.map": "/ref-aurora-frontend/static/js/runtime-main.464991e0.js.map",
-    "static/css/2.27e2041f.chunk.css": "/ref-aurora-frontend/static/css/2.27e2041f.chunk.css",
-    "static/js/2.014f0b78.chunk.js": "/ref-aurora-frontend/static/js/2.014f0b78.chunk.js",
-    "static/js/2.014f0b78.chunk.js.map": "/ref-aurora-frontend/static/js/2.014f0b78.chunk.js.map",
-    "index.html": "/ref-aurora-frontend/index.html",
-    "precache-manifest.f6cd2c6623bcd6aad5dcb24f2cfa9046.js": "/ref-aurora-frontend/precache-manifest.f6cd2c6623bcd6aad5dcb24f2cfa9046.js",
-    "service-worker.js": "/ref-aurora-frontend/service-worker.js",
-    "static/css/2.27e2041f.chunk.css.map": "/ref-aurora-frontend/static/css/2.27e2041f.chunk.css.map",
-    "static/css/main.45a2763a.chunk.css.map": "/ref-aurora-frontend/static/css/main.45a2763a.chunk.css.map",
-    "static/js/2.014f0b78.chunk.js.LICENSE.txt": "/ref-aurora-frontend/static/js/2.014f0b78.chunk.js.LICENSE.txt",
-    "static/media/bootstrap-icons.css": "/ref-aurora-frontend/static/media/bootstrap-icons.c5787b4a.woff2"
+    "main.css": "/aurora-defi-on-near/static/css/main.45a2763a.chunk.css",
+    "main.js": "/aurora-defi-on-near/static/js/main.4c420603.chunk.js",
+    "main.js.map": "/aurora-defi-on-near/static/js/main.4c420603.chunk.js.map",
+    "runtime-main.js": "/aurora-defi-on-near/static/js/runtime-main.3e550bac.js",
+    "runtime-main.js.map": "/aurora-defi-on-near/static/js/runtime-main.3e550bac.js.map",
+    "static/css/2.6e5f18d9.chunk.css": "/aurora-defi-on-near/static/css/2.6e5f18d9.chunk.css",
+    "static/js/2.82fa381d.chunk.js": "/aurora-defi-on-near/static/js/2.82fa381d.chunk.js",
+    "static/js/2.82fa381d.chunk.js.map": "/aurora-defi-on-near/static/js/2.82fa381d.chunk.js.map",
+    "index.html": "/aurora-defi-on-near/index.html",
+    "precache-manifest.2e1e18b22ad493999ce1be1df334f800.js": "/aurora-defi-on-near/precache-manifest.2e1e18b22ad493999ce1be1df334f800.js",
+    "service-worker.js": "/aurora-defi-on-near/service-worker.js",
+    "static/css/2.6e5f18d9.chunk.css.map": "/aurora-defi-on-near/static/css/2.6e5f18d9.chunk.css.map",
+    "static/css/main.45a2763a.chunk.css.map": "/aurora-defi-on-near/static/css/main.45a2763a.chunk.css.map",
+    "static/js/2.82fa381d.chunk.js.LICENSE.txt": "/aurora-defi-on-near/static/js/2.82fa381d.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/aurora-defi-on-near/static/media/bootstrap-icons.c5787b4a.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.464991e0.js",
-    "static/css/2.27e2041f.chunk.css",
-    "static/js/2.014f0b78.chunk.js",
+    "static/js/runtime-main.3e550bac.js",
+    "static/css/2.6e5f18d9.chunk.css",
+    "static/js/2.82fa381d.chunk.js",
     "static/css/main.45a2763a.chunk.css",
-    "static/js/main.a835e18f.chunk.js"
+    "static/js/main.4c420603.chunk.js"
   ]
 }
