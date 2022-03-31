@@ -91,8 +91,8 @@ function App(props) {
       <Router basename={process.env.PUBLIC_URL}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/" title="Defi Hub">
-              Defi Hub
+            <a className="navbar-brand" href="/" title="Play with Aurora DeFi protocols using NEAR account">
+              Play with Aurora DeFi protocols using NEAR account
             </a>
             <button
               className="navbar-toggler"

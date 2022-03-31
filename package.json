@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
+  "name": "aurora-defi-on-near",
   "version": "0.1.0",
-  "homepage": "https://think-in-universe.github.io/ref-aurora-frontend",
+  "homepage": "https://think-in-universe.github.io/aurora-defi-on-near/",
   "private": true,
   "dependencies": {
     "@aurora-is-near/engine": "think-in-universe/aurora.js#support-es6",
