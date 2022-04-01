@@ -6,20 +6,20 @@
     "runtime-main.js": "/aurora-defi-on-near/static/js/runtime-main.3e550bac.js",
     "runtime-main.js.map": "/aurora-defi-on-near/static/js/runtime-main.3e550bac.js.map",
     "static/css/2.6e5f18d9.chunk.css": "/aurora-defi-on-near/static/css/2.6e5f18d9.chunk.css",
-    "static/js/2.fe4f4275.chunk.js": "/aurora-defi-on-near/static/js/2.fe4f4275.chunk.js",
-    "static/js/2.fe4f4275.chunk.js.map": "/aurora-defi-on-near/static/js/2.fe4f4275.chunk.js.map",
+    "static/js/2.559c9e3f.chunk.js": "/aurora-defi-on-near/static/js/2.559c9e3f.chunk.js",
+    "static/js/2.559c9e3f.chunk.js.map": "/aurora-defi-on-near/static/js/2.559c9e3f.chunk.js.map",
     "index.html": "/aurora-defi-on-near/index.html",
-    "precache-manifest.c99f3c89a3689a1dbdee30fb1291d302.js": "/aurora-defi-on-near/precache-manifest.c99f3c89a3689a1dbdee30fb1291d302.js",
+    "precache-manifest.c9a28aa0335dc28472cd2d50d36f4859.js": "/aurora-defi-on-near/precache-manifest.c9a28aa0335dc28472cd2d50d36f4859.js",
     "service-worker.js": "/aurora-defi-on-near/service-worker.js",
     "static/css/2.6e5f18d9.chunk.css.map": "/aurora-defi-on-near/static/css/2.6e5f18d9.chunk.css.map",
     "static/css/main.45a2763a.chunk.css.map": "/aurora-defi-on-near/static/css/main.45a2763a.chunk.css.map",
-    "static/js/2.fe4f4275.chunk.js.LICENSE.txt": "/aurora-defi-on-near/static/js/2.fe4f4275.chunk.js.LICENSE.txt",
+    "static/js/2.559c9e3f.chunk.js.LICENSE.txt": "/aurora-defi-on-near/static/js/2.559c9e3f.chunk.js.LICENSE.txt",
     "static/media/bootstrap-icons.css": "/aurora-defi-on-near/static/media/bootstrap-icons.c5787b4a.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.3e550bac.js",
     "static/css/2.6e5f18d9.chunk.css",
-    "static/js/2.fe4f4275.chunk.js",
+    "static/js/2.559c9e3f.chunk.js",
     "static/css/main.45a2763a.chunk.css",
     "static/js/main.24aca7bd.chunk.js"
   ]

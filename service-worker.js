@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/aurora-defi-on-near/precache-manifest.c99f3c89a3689a1dbdee30fb1291d302.js"
+  "/aurora-defi-on-near/precache-manifest.c9a28aa0335dc28472cd2d50d36f4859.js"
 );
 
 self.addEventListener('message', (event) => {
