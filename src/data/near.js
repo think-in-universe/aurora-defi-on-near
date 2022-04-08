@@ -26,6 +26,7 @@ const TestNearConfig = {
   walletUrl: "https://wallet.testnet.near.org",
   storageCostPerByte: StorageCostPerByte,
   wrapNearAccountId: "wrap.testnet",
+  ethBridgeAddress: "0xe9217bc70b7ed1f598ddd3199e80b093fa71124f",
   auroraContractId: "aurora",
 };
 const MainnetContract = "aurora";
@@ -39,6 +40,7 @@ export const MainNearConfig = {
   wrapNearAccountId: "wrap.near",
   usdtAccountId: "dac17f958d2ee523a2206206994597c13d831ec7.factory.bridge.near",
   trisolarisAddress: "0x2cb45edb4517d5947afde3beabf95a582506858b",
+  ethBridgeAddress: "0xe9217bc70b7ed1f598ddd3199e80b093fa71124f",
   auroraContractId: "aurora",
 };
 

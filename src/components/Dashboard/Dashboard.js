@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NearConfig, TGas, useAurora, useNear } from "../../data/near";
 import { useErc20Balances } from "../../data/aurora/token";
 import { useErc20AllowanceForDex } from "../../data/aurora/dex";
-import { OneNear, OneEth, OneUSDT, toAddress, buildInput, tokenStorageDeposit } from "../../data/utils";
+import { OneNear, OneEth, OneUSDT, toAddress, buildInput, tokenStorageDeposit, Zero64 } from "../../data/utils";
 import Big from "big.js";
 import { useTokens } from "../../data/aurora/tokenList";
 import "./Dashboard.scss";
@@ -115,6 +115,52 @@ export default function Dashboard(props) {
       console.log(res);
       setLoading(false);
     }
+  };
+
+  const depositETH = async (e, amount) => {
+    e.preventDefault();
+    setLoading(true);
+    const actions = [
+      [
+        token,
+        nearAPI.transactions.functionCall(
+          "ft_transfer_call",
+          {
+            receiver_id: NearConfig.contractName,
+            amount: Big(amount).mul(OneEth).toFixed(0),
+            memo: null,
+            msg: account.accountId
+              + ":"
+              + Zero64 // fee
+              + address.substring(2),
+          },
+          TGas.mul(70).toFixed(0),
+          1
+        ),
+      ],
+    ];
+
+    await near.sendTransactions(actions);
+  };
+
+  const withdrawETH = async (e, amount) => {
+    e.preventDefault();
+    setLoading(true);
+    const input = `0x00${Buffer.from(account.accountId, "utf-8").toString("hex")}`;
+    // Warning: The function call here doesn't work, because the current API doesn't support the 2nd `value` parameter
+    //
+    // pub struct FunctionCallArgsV2 {
+    //   pub contract: RawAddress,
+    //   pub value: WeiU256,
+    //   pub input: Vec<u8>,
+    // }
+    const res = (await aurora.call(
+      toAddress(NearConfig.ethBridgeAddress),
+      OneEth.mul(amount).round(0, 0).toFixed(0),
+      input
+    )).unwrap();
+    console.log(res);
+    setLoading(false);
   };
 
   const approve = async(e, token, amount) => {
