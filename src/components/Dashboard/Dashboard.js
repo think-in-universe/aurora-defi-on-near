@@ -146,7 +146,6 @@ export default function Dashboard(props) {
   const withdrawETH = async (e, amount) => {
     e.preventDefault();
     setLoading(true);
-    const input = `0x00${Buffer.from(account.accountId, "utf-8").toString("hex")}`;
     // Warning: The function call here doesn't work, because the current API doesn't support the 2nd `value` parameter
     //
     // pub struct FunctionCallArgsV2 {
@@ -155,9 +154,9 @@ export default function Dashboard(props) {
     //   pub input: Vec<u8>,
     // }
     const res = (await aurora.call(
-      toAddress(NearConfig.ethBridgeAddress),
-      OneEth.mul(amount).round(0, 0).toFixed(0),
-      input
+      toAddress(NearConfig.ethBridgeAddress),                               // contract address
+      OneEth.mul(amount).round(0, 0).toFixed(0),                            // value (not supported)
+      `0x00${Buffer.from(account.accountId, "utf-8").toString("hex")}`      // input
     )).unwrap();
     console.log(res);
     setLoading(false);
