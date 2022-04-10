@@ -201,9 +201,9 @@ export default function Dashboard(props) {
       <div>Account: {address.toString()}</div>
       <div>Allowance for {wNEAR}: {allowance && allowance.div(Big(OneNear)).toNumber()}</div>
       <div>
-        <p>
+        <h6>
           (1) Swap with TriSolaris:
-        </p>
+        </h6>
         <button
           className="btn btn-primary m-1"
           onClick={(e) => depositToken(e, wNEAR, 1)}
@@ -234,9 +234,9 @@ export default function Dashboard(props) {
         </button>
       </div>
       <div>
-        <p>
+        <h6>
           (2) Deposit and Withdraw ETH:
-        </p>
+        </h6>
         <button
           className="btn btn-secondary m-1"
           onClick={(e) => depositETH(e, 0.0001)}

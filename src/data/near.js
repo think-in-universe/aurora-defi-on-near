@@ -16,7 +16,7 @@ export const randomPublicKey = nearAPI.utils.PublicKey.from(
 
 // const isLocalhost = window.location.hostname === "localhost";
 
-export const IsMainnet = true;
+export const IsMainnet = false;
 const TestnetContract = "aurora";
 const TestNearConfig = {
   networkId: "testnet",
