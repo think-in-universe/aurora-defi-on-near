@@ -155,8 +155,8 @@ export default function Dashboard(props) {
     // }
     const res = (await aurora.call(
       toAddress(NearConfig.ethBridgeAddress),                               // contract address
-      OneEth.mul(amount).round(0, 0).toFixed(0),                            // value (not supported)
-      `0x00${Buffer.from(account.accountId, "utf-8").toString("hex")}`      // input
+      `0x00${Buffer.from(account.accountId, "utf-8").toString("hex")}`,     // input
+      OneEth.mul(amount).round(0, 0).toFixed(0),                            // value
     )).unwrap();
     console.log(res);
     setLoading(false);
