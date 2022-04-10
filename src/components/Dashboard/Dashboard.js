@@ -122,7 +122,7 @@ export default function Dashboard(props) {
     setLoading(true);
     const actions = [
       [
-        token,
+        NearConfig.contractName,
         nearAPI.transactions.functionCall(
           "ft_transfer_call",
           {
@@ -201,6 +201,9 @@ export default function Dashboard(props) {
       <div>Account: {address.toString()}</div>
       <div>Allowance for {wNEAR}: {allowance && allowance.div(Big(OneNear)).toNumber()}</div>
       <div>
+        <p>
+          (1) Swap with TriSolaris:
+        </p>
         <button
           className="btn btn-primary m-1"
           onClick={(e) => depositToken(e, wNEAR, 1)}
@@ -228,6 +231,23 @@ export default function Dashboard(props) {
           onClick={(e) => withdrawToken(e, USDT, 1)}
         >
           Withdraw 1 USDT
+        </button>
+      </div>
+      <div>
+        <p>
+          (2) Deposit and Withdraw ETH:
+        </p>
+        <button
+          className="btn btn-secondary m-1"
+          onClick={(e) => depositETH(e, 0.0001)}
+        >
+          Deposit 0.0001 ETH
+        </button>
+        <button
+          className="btn btn-danger m-1"
+          onClick={(e) => withdrawETH(e, 0.0001)}
+        >
+          Withdraw 0.0001 ETH
         </button>
       </div>
       <div>
